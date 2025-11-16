@@ -1,0 +1,19 @@
+{
+  "name": "xu-id-queuing",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "Start": "nodemon server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "express": "^5.1.0",
+    "mongoose": "^8.19.4"
+  },
+  "devDependencies": {
+    "dotenv": "^17.2.3",
+    "nodemon": "^3.1.11"
+  }
+}
