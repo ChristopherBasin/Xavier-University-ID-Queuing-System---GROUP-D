@@ -46,5 +46,36 @@ Checklist:
  - [ ] Chapter 3 of the Project document
  - [x] Repo created + initial commit
  - [x] Env + dependencies installed
- - [ ] Create/list endpoints work
+ - [x] Create/list endpoints work
  - [x] GitHub pushed
+
+### Milestone 3 (Nov Week 3): Full Backend API
+
+- **What we’ll do:**
+  - Complete server and API functions.
+  - Add validation and error responses (400/404) consistently.
+  - Seed script with sample data for demos.
+  - Update OpenAPI to match actual responses and edge cases.
+- **Deliverables:**
+  - All planned endpoints implemented and tested locally.
+  - OpenAPI spec validated in Swagger Editor (no schema errors).
+- **Checklist:**
+  - [ ] All endpoints done
+  - [ ] Validation + errors consistent
+  - [ ] Seed data added
+  - [ ] OpenAPI validated
+
+### Milestone 4 (Nov Week 4): Frontend Integration
+
+- **What we’ll do:**
+  - Finalization of the conceptual design of the webpages
+  - Build a simple website that calls the API (list/create/claim).
+  - Handle loading and error states on the frontend.
+- **Deliverables:**
+  - Frontend that demonstrates key API flows.
+  - Instructions in README on how to run frontend + connect to API.
+- **Checklist:**
+  - [ ] Frontend lists data
+  - [ ] Frontend creates data
+  - [ ] Frontend handles errors/loading
+  - [ ] Run steps documented
