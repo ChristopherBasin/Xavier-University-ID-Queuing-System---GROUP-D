@@ -1,17 +1,33 @@
-require('dotenv').config()
+require('dotenv').config();
 
-const express = require('express')
-const app = express()
-const mongoose = require('mongoose')
+const express = require('express');
+const mongoose = require('mongoose');
+const cors = require('cors');
 
-mongoose.connect(process.env.DATABASE_URL, { useNewurlParser: true})
-const db = mongoose.connection 
-db.on('error', (error) => console.error(error))
-db.once('open', (error) => console.log('Connected to Database'))
+const app = express();
 
-app.use(express.json())
+mongoose.connect(process.env.DATABASE_URL, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+});
 
-const studentRouter = require('./routes/students')
-app.use('/students', studentRouter)
- 
-app.listen(3000, () => console.log('Server Started'))
+const db = mongoose.connection;
+db.on('error', (error) => console.error('Database Error:', error));
+db.once('open', () => console.log('Connected to Database'));
+
+app.use(cors());
+app.use(express.json());
+
+const studentRouter = require('./routes/student');
+const adminRouter = require('./routes/admin');
+
+app.use('/api/students', studentRouter);
+app.use('/api/admin', adminRouter);
+
+
+
+const reservationRouter = require('./routes/reservation'); 
+app.use('/api/reservation', reservationRouter);
+
+
+app.listen(3000, () => console.log('🚀 Server running on port 3000'));
