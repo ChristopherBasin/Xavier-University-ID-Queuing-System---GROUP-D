@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const Reservation = require("../models/reservation");
+const auth = require("../middleware/auth");
 
 // CREATE RESERVATION
 router.post("/reservation", async (req, res) => {
@@ -107,5 +108,7 @@ router.delete("/:id", async (req, res) => {
         res.status(500).json({ success: false, error: err.message });
     }
 });
+
+
 
 module.exports = router;

@@ -29,5 +29,7 @@ app.use('/api/admin', adminRouter);
 const reservationRouter = require('./routes/reservation'); 
 app.use('/api/reservation', reservationRouter);
 
+const authRouter = require('./routes/auth');
+app.use('/auth', authRouter);
 
 app.listen(3000, () => console.log('🚀 Server running on port 3000'));
