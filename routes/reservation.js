@@ -2,113 +2,78 @@ const express = require("express");
 const router = express.Router();
 const Reservation = require("../models/reservation");
 const auth = require("../middleware/auth");
+const SystemSetting = require("../models/systemSetting");
 
-// CREATE RESERVATION
-router.post("/reservation", async (req, res) => {
-    try {
-        const {
-            idNumber,
-            name,
-            age,
-            birthdate,
-            preferredDate,
-            emergencyContact,
-            address,
-            mobileNumber
-        } = req.body;
+// STUDENT CREATE RESERVATION
+router.post("/", auth("student"), async (req, res) => {
+  try {
+    const { date, hour } = req.body;
+    const studentId = req.user.idNumber;
 
-        const reservation = await Reservation.create({
-            idNumber,
-            name,
-            age,
-            birthdate,
-            preferredDate,
-            emergencyContact,
-            address,
-            mobileNumber
-        });
+    // 1️⃣ CHECK IF SYSTEM IS OPEN
+    const system = await SystemSetting.findOne();
 
-        res.json({
-            success: true,
-            message: "Reservation submitted successfully",
-            reservation
-        });
-
-    } catch (err) {
-        res.status(500).json({ success: false, error: err.message });
+    if (!system || !system.reservationsOpen) {
+      return res.status(403).json({
+        success: false,
+        message: "Reservations are currently closed"
+      });
     }
-});
 
-// GET ALL RESERVATIONS
-router.get("/", async (req, res) => {
-    try {
-        const reservations = await Reservation.find().sort({ preferredDate: 1 });
-        res.json({ success: true, reservations });
-    } catch (err) {
-        res.status(500).json({ success: false, error: err.message });
+    // 2️⃣ BOOKING WINDOW CHECK
+    const bookingStart = new Date(process.env.BOOKING_START);
+    const bookingEnd = new Date(process.env.BOOKING_END);
+    const selectedDate = new Date(date);
+
+    if (selectedDate < bookingStart || selectedDate > bookingEnd) {
+      return res.status(400).json({
+        success: false,
+        message: "Date not within booking period"
+      });
     }
-});
 
-// GET RECEIPT BY ID NUMBER
-router.get("/receipt/:idNumber", async (req, res) => {
-    try {
-        const reservation = await Reservation.findOne({ idNumber: req.params.idNumber });
+    // 3️⃣ EXISTING RESERVATION CHECK
+    const existing = await Reservation.findOne({
+      studentId,
+      status: { $in: ["pending", "processing", "ready", "done"] }
+    });
 
-        if (!reservation) {
-            return res.status(404).json({ success: false, message: "Reservation not found" });
-        }
-
-        res.json({
-            success: true,
-            receipt: {
-                title: "Xavier University ID Reservation Receipt",
-                referenceNumber: reservation._id,
-                idNumber: reservation.idNumber,
-                name: reservation.name,
-                preferredDate: reservation.preferredDate,
-                createdAt: reservation.createdAt,
-                message: "Show this receipt to the admin during your scheduled ID processing."
-            }
-        });
-    } catch (err) {
-        res.status(500).json({ success: false, error: err.message });
+    if (existing) {
+      return res.status(400).json({
+        success: false,
+        message: "You already have a reservation"
+      });
     }
-});
 
-// UPDATE RESERVATION BY _ID
-router.put("/:id", async (req, res) => {
-    try {
-        const updated = await Reservation.findByIdAndUpdate(
-            req.params.id,
-            req.body,
-            { new: true }
-        );
+    // 4️⃣ HOURLY LIMIT CHECK
+    const count = await Reservation.countDocuments({
+      date,
+      hour,
+      status: { $ne: "cancelled" }
+    });
 
-        if (!updated) {
-            return res.status(404).json({ success: false, message: "Reservation not found" });
-        }
-
-        res.json({ success: true, message: "Reservation updated successfully", updated });
-    } catch (err) {
-        res.status(500).json({ success: false, error: err.message });
+    if (count >= 15) {
+      return res.status(400).json({
+        success: false,
+        message: "Slot is full"
+      });
     }
+
+    // 5️⃣ CREATE RESERVATION
+    const reservation = await Reservation.create({
+      studentId,
+      date,
+      hour
+    });
+
+    res.json({
+      success: true,
+      reservation
+    });
+
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
 });
-
-// DELETE RESERVATION BY _ID
-router.delete("/:id", async (req, res) => {
-    try {
-        const deleted = await Reservation.findByIdAndDelete(req.params.id);
-
-        if (!deleted) {
-            return res.status(404).json({ success: false, message: "Reservation not found" });
-        }
-
-        res.json({ success: true, message: "Reservation deleted successfully" });
-    } catch (err) {
-        res.status(500).json({ success: false, error: err.message });
-    }
-});
-
-
 
 module.exports = router;

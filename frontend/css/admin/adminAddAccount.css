@@ -1,0 +1,136 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+* {
+    font-family: "Poppins", sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Background ------------------------------------------------ */
+body {
+    background: linear-gradient(135deg, #0038A8, #0078FF);
+}
+
+/* Outer Wrapper -------------------------------------------- */
+.wrapper {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Main Card ------------------------------------------------ */
+.add-layout-card {
+    width: 90%;
+    max-width: 1200px;
+    background: white;
+    padding: 50px;
+    border-radius: 35px;
+    display: flex;
+    align-items: center;
+    gap: 60px;
+}
+
+/* LEFT PANEL ----------------------------------------------- */
+.left-panel {
+    width: 45%;
+    display: flex;
+    justify-content: center;
+}
+
+.xu-logo {
+    width: 260px;
+}
+
+/* RIGHT PANEL ---------------------------------------------- */
+.right-panel {
+    width: 55%;
+}
+
+/* Title ----------------------------------------------------- */
+.title {
+    text-align: center;
+    font-size: 24px;
+    font-weight: 700;
+    color: #2A3D82;
+    margin-bottom: 18px;
+}
+
+/* Info Container ------------------------------------------- */
+.info-box {
+    border: 1.7px solid #C6CCE9;
+    border-radius: 15px;
+    padding: 20px 25px;
+    margin-bottom: 25px;
+}
+
+.info-box h4 {
+    text-align: center;
+    font-size: 13px;
+    font-weight: 700;
+    color: #2A3D82;
+    margin-bottom: 12px;
+}
+
+/* Labels ---------------------------------------------------- */
+.info-box label {
+    font-size: 12px;
+    font-weight: 600;
+    margin-top: 6px;
+    margin-bottom: 4px;
+    color: #2A3D82;
+}
+
+/* Inputs ---------------------------------------------------- */
+.outline-input {
+    width: 100%;
+    font-size: 12px;
+    padding: 8px 12px;
+    border-radius: 10px;
+    border: 1.5px solid #C6CCE9;
+    margin-bottom: 10px;
+    outline: none;
+}
+
+.outline-input:focus {
+    border-color: #2A3D82;
+}
+
+/* Button ---------------------------------------------------- */
+.proceed-btn {
+    display: block;
+    margin: 0 auto;
+    background: #2A3D82;
+    color: white;
+    padding: 10px 35px;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: .5px;
+}
+
+.proceed-btn:hover {
+    background: #1d2a6d;
+}
+/* BACK BUTTON --------------------------------------------- */
+.back-btn {
+    position: absolute;
+    top: 25px;
+    left: 40px;
+    font-size: 14px;
+    font-weight: 500;
+    color: white;
+    text-decoration: none;
+    padding: 8px 15px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(3px);
+    transition: 0.2s;
+}
+
+.back-btn:hover {
+    background: rgba(255, 255, 255, 0.45);
+}

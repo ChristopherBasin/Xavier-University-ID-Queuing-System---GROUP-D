@@ -1,0 +1,358 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+* {
+    font-family: "Poppins", sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: linear-gradient(135deg, #0038A8, #0078FF);
+}
+
+/* WRAPPER --------------------------------------------------- */
+.wrapper {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* MAIN CARD -------------------------------------------------- */
+.admin-card {
+    background: white;
+    border-radius: 35px;
+    width: 90%;
+    max-width: 1200px;
+    padding: 35px;
+    position: relative;
+}
+
+/* TITLE ------------------------------------------------------ */
+.dashboard-title {
+    text-align: center;
+    font-size: 18px;
+    font-weight: 700;
+    color: #2A3D82;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+}
+
+/* ADD ACCOUNT LINK ------------------------------------------- */
+.add-account-btn {
+    position: absolute;
+    top: 25px;
+    right: 50px;
+    font-size: 12px;
+    color: #2A3D82;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+/* TABLE ------------------------------------------------------- */
+.admin-table {
+    border: 1.5px solid #C6CCE9;
+    border-radius: 15px;
+    padding: 15px;
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th {
+    font-size: 12px;
+    font-weight: 600;
+    color: #2A3D82;
+    padding-bottom: 8px;
+    text-align: center;
+}
+
+td {
+    font-size: 12px;
+    padding: 8px;
+    border-bottom: 0.8px solid #C6CCE9;
+    text-align: center;
+    color: #2A3D82;
+}
+
+tr:last-child td {
+    border-bottom: none;
+}
+
+/* CHECK DETAILS BUTTON --------------------------------------- */
+.details-btn {
+    padding: 5px 12px;
+    font-size: 11px;
+    border-radius: 6px;
+    border: 1px solid #2A3D82;
+    background: white;
+    color: #2A3D82;
+    cursor: pointer;
+}
+
+/* STATUS DROPDOWN -------------------------------------------- */
+.status-dropdown {
+    font-size: 11px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    color: #2A3D82;
+}
+
+.status-dropdown:focus {
+    outline: none;
+}
+
+/* TOGGLE SWITCH ---------------------------------------------- */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 18px;
+}
+
+.switch input {
+    display: none;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #C6CCE9;
+    border-radius: 20px;
+    transition: .3s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 14px;
+    width: 14px;
+    left: 2px;
+    bottom: 2px;
+    background-color: white;
+    border-radius: 50%;
+    transition: .3s;
+}
+
+input:checked + .slider {
+    background-color: #2A3D82;
+}
+
+input:checked + .slider:before {
+    transform: translateX(22px);
+}
+
+/* SEARCH BOX ------------------------------------------------- */
+.search-box {
+    margin-top: 25px;
+    border: 2px solid #2A3D82;
+    border-radius: 25px;
+    padding: 10px 15px;
+    width: 60%;
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    background: white;
+}
+
+.search-box input {
+    flex: 1;
+    border: none;
+    outline: none;
+    font-size: 13px;
+    color: #2A3D82;
+}
+
+.search-box button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    color: #2A3D82;
+}
+/* ---------------- IMPORT FONTS ---------------- */
+@import url('https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+/* ---------------- GLOBAL STYLES ---------------- */
+* {
+    font-family: "Poppins", sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ---------------- BACKGROUND ---------------- */
+body {
+    background: linear-gradient(135deg, #0038a8, #007bff);
+}
+
+/* ------------- WRAPPER CENTERING ----------- */
+.wrapper {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ------------- MAIN WHITE CARD ------------- */
+.card {
+    width: 90%;
+    max-width: 1100px;
+    height: 530px;
+    background: white;
+    border-radius: 30px;
+    display: flex;
+    padding: 40px 50px;
+}
+
+/* ------------- LEFT SIDE ------------------ */
+.left-panel {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+.xu-logo {
+    width: 210px;
+    margin: 0 auto 20px auto;
+}
+
+.left-panel h2 {
+    font-weight: 500;
+    color: #0038a8;
+    font-size: 20px;
+}
+
+/* ------------- RIGHT SIDE ----------------- */
+.right-panel {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 50px;
+}
+
+.title {
+    color: #2d3e82;
+    font-weight: 700;
+    margin-bottom: 30px;
+    letter-spacing: 1px;
+}
+
+/* -------- INPUT LABELS ------------ */
+label {
+    font-size: 12px;
+    color: #2d3e82;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+/* -------- INPUT FIELDS ------------ */
+input {
+    width: 80%;
+    padding: 10px 15px;
+    border: 2px solid #cdd2f2;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    outline: none;
+    font-size: 14px;
+}
+
+input::placeholder {
+    color: #b0b5d7;
+}
+
+/* -------- BUTTON ------------ */
+.proceed-btn {
+    width: 150px;
+    padding: 12px;
+    border: none;
+    background: #2d3e82;
+    color: white;
+    border-radius: 20px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.proceed-btn:hover {
+    background: #1c2a66;
+}
+
+/* ---------------- DASHBOARD ---------------- */
+.dashboard-card {
+    display: flex;
+    gap: 40px;
+}
+
+.dashboard-panel {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 50%;
+}
+
+.dashboard-title {
+    text-align: center;
+    font-size: 14px;
+    font-weight: 600;
+    color: #1f2b6e;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+}
+
+.reservation-box {
+    width: 70%;
+    border: 1.5px solid #cdd2f2;
+    border-radius: 12px;
+    padding: 40px 20px;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.no-reservations {
+    font-size: 12px;
+    color: #1f2b6e;
+    font-weight: 500;
+    margin-bottom: 15px;
+}
+
+/* Smaller dashboard button */
+.small-btn {
+    width: 140px;
+    padding: 10px;
+    border-radius: 15px;
+    font-size: 12px;
+}
+
+/* ---------------- LOGOUT BUTTON ---------------- */
+.logout-btn {
+    position: absolute;
+    top: 60px;
+    right: 130px;
+    background: #dcdee7;
+    color: white;
+    padding: 8px 18px;
+    font-size: 13px;
+    font-weight: 600;
+    border-radius: 20px;
+    text-decoration: none;
+    transition: 0.2s;
+}
+
+.logout-btn:hover {
+    background: #1c2a66;
+}

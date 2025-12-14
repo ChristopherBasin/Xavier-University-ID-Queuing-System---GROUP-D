@@ -1,0 +1,56 @@
+body {
+  background: linear-gradient(135deg, #0038a8, #007bff);
+  font-family: Poppins, sans-serif;
+}
+
+.wrapper {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card {
+  background: white;
+  width: 90%;
+  max-width: 1100px;
+  border-radius: 30px;
+  display: flex;
+  padding: 40px;
+}
+
+.left-panel {
+  width: 45%;
+  text-align: center;
+}
+
+.xu-logo {
+  width: 220px;
+}
+
+.right-panel {
+  width: 55%;
+}
+
+.info-box {
+  border: 1.5px solid #cdd2f2;
+  padding: 15px;
+  border-radius: 15px;
+  font-size: 13px;
+  margin-bottom: 20px;
+}
+
+.schedule input {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 8px;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  background: #2d3e82;
+  color: white;
+  border: none;
+  border-radius: 20px;
+}
