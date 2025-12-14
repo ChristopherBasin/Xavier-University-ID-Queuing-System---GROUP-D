@@ -1,27 +1,45 @@
 const jwt = require("jsonwebtoken");
+
 const JWT_SECRET = process.env.JWT_SECRET;
 
-function auth(requiredRole) {
+function auth(requiredRole = null) {
     return (req, res, next) => {
-        const token = req.headers.authorization?.split(" ")[1];
+        const authHeader = req.headers.authorization;
 
-        if (!token) {
-            return res.status(401).json({ success: false, message: "No token provided" });
+        if (!authHeader || !authHeader.startsWith("Bearer ")) {
+            return res.status(401).json({
+                success: false,
+                message: "No token provided"
+            });
         }
+
+        const token = authHeader.split(" ")[1];
 
         try {
             const decoded = jwt.verify(token, JWT_SECRET);
+
+            // decoded can contain:
+            // { idNumber, role } OR { studentId } OR { adminID }
             req.user = decoded;
 
-            if (requiredRole && decoded.role !== requiredRole) {
-                return res.status(403).json({ success: false, message: "Access denied" });
+            // Role-based protection (if required)
+            if (requiredRole) {
+                if (!decoded.role || decoded.role !== requiredRole) {
+                    return res.status(403).json({
+                        success: false,
+                        message: "Access denied"
+                    });
+                }
             }
 
             next();
-        } catch {
-            res.status(401).json({ success: false, message: "Invalid token" });
+        } catch (err) {
+            return res.status(401).json({
+                success: false,
+                message: "Invalid or expired token"
+            });
         }
-    }
+    };
 }
 
 module.exports = auth;

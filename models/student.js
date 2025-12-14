@@ -1,13 +1,15 @@
 const mongoose = require("mongoose");
 
 const StudentSchema = new mongoose.Schema({
-    studentId: { type: String, required: true },
     name: { type: String, required: true },
-    course: { type: String, required: true },
-    purpose: { type: String, required: true },
-    queueNumber: { type: Number, required: true },
-    status: { type: String, default: "waiting" },
-    createdAt: { type: Date, default: Date.now }
-});
+    studentId: { type: String, required: true, unique: true },
+    birthday: { type: String, required: true },
+    address: { type: String, required: true },
+    emergencyPerson: { type: String, required: true },
+    emergencyPhone: { type: String, required: true },
+    queueNumber: { type: Number, default: null },
+    purpose: { type: String, default: "ID Reservation" },
+    course: { type: String, default: "N/A" }
+}, { timestamps: true });
 
 module.exports = mongoose.model("Student", StudentSchema);

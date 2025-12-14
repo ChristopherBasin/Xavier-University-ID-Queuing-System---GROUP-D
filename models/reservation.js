@@ -1,41 +1,29 @@
 const mongoose = require("mongoose");
 
-const ReservationSchema = new mongoose.Schema({
-    idNumber: {
-        type: String,
-        required: true,
-        match: /^[0-9]{11}$/ // Example: 20230027968
+const reservationSchema = new mongoose.Schema(
+  {
+    studentId: {
+      type: String,
+      required: true
     },
-    name: {
-        type: String,
-        required: true
-    },
-    age: {
-        type: Number,
-        required: true,
-        min: 1
-    },
-    birthdate: {
-        type: Date,
-        required: true
-    },
-    preferredDate: {
-        type: Date,
-        required: true
-    },
-    emergencyContact: {
-        name: { type: String, required: true },
-        address: { type: String, required: true },
-        contactNumber: { type: String, required: true }
-    },
-    address: {
-        type: String,
-        required: true
-    },
-    mobileNumber: {
-        type: String,
-        required: true
-    }
-}, { timestamps: true });
 
-module.exports = mongoose.model("Reservation", ReservationSchema);
+    date: {
+      type: String,
+      required: true
+    },
+
+    hour: {
+      type: String,
+      required: true
+    },
+
+    status: {
+      type: String,
+      enum: ["pending", "cancelled", "processing", "ready", "done"],
+      default: "pending"
+    }
+  },
+  { timestamps: true }
+);
+
+module.exports = mongoose.model("Reservation", reservationSchema);

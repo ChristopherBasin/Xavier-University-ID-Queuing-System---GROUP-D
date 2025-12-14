@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>User Dashboard</title>
+  <link rel="stylesheet" href="../../css/user/userDashboard.css">
+</head>
+<body>
+
+<!-- LOGOUT -->
+<button class="logout-btn" onclick="logout()">LOG OUT</button>
+
+<div class="wrapper">
+  <div class="card">
+
+    <div class="left-panel">
+      <img src="../../assets/xuLogo.svg" class="xu-logo">
+    </div>
+
+    <div class="right-panel">
+      <h3 class="dashboard-title">BOOKING DASHBOARD</h3>
+
+      <div class="reservation-box">
+        <p class="no-reservations">NO RESERVATIONS YET</p>
+        <button class="proceed-btn" onclick="goToConfirmation()">
+          BOOK ID QUEUE
+        </button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script src="../../js/user/userDashboard.js"></script>
+</body>
+</html>
